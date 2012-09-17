@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MVC.KML.Models.KMPlaceMarkLViewModel>
+@{
+    Layout = null;
+    Response.AddHeader("Content-Type", "application/vnd.google-earth.kml+xml"); 
+}
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document>
+        @foreach(var mark in Model){
+        <Placemark>
+            <name>@mark.Name</name>
+            <description>@mark.Description</description>
+            <Point>
+                <coordinates>@mark.Point</coordinates>
+            </Point>
+        </Placemark>
+        }
+    </Document>
+</kml>
